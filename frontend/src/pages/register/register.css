@@ -1,0 +1,61 @@
+.register {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: whitesmoke;
+}
+
+.registerContainer {
+  background-color: rgb(7, 70, 165);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.registerTitle {
+  margin-bottom: 15px;
+}
+
+.registerDiv {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.registerDiv > input {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.signUpButton {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.registerContainer > a {
+  color: inherit;
+  cursor: pointer;
+}
+
+
+.abraham input {
+  border: none;
+  outline: none;
+  width: 90%;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.abraham {
+  background-color: aliceblue;
+  border-radius: 5px;
+}
+
+.abraham .headerSearchIcon1 {
+  background-color: black;
+  border-radius: 50%;
+
+}
