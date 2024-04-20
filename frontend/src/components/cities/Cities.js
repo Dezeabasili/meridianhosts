@@ -26,7 +26,8 @@ const Cities = () => {
       const loadPage = async () => {
         setLoading(true);
         try {
-          const resp = await axios.get("http://localhost:5000/api/v1/hotels/countByCity");
+          // const resp = await axios.get("http://localhost:5000/api/v1/hotels/countByCity");
+          const resp = await axios.get("/hotels/countByCity");
           // console.log("resp.data: ", resp.data.data);
           setHotelsData([...resp.data.data]);
           setLoading(false);

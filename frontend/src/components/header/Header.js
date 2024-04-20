@@ -44,7 +44,8 @@ const Header = ({ type }) => {
         setDestination("");
 
         try {
-          const resp = await axios.get("http://localhost:5000/api/v1/hotels/allcityrefs");
+          // const resp = await axios.get("http://localhost:5000/api/v1/hotels/allcityrefs");
+          const resp = await axios.get("/hotels/allcityrefs");
           // console.log("hotels: ", resp.data.data);
           setCityData([...resp.data.data]);
 

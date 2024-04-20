@@ -57,7 +57,8 @@ const Messages = () => {
 
   useEffect(() => {
     if (socket.current == null) {
-      socket.current = io("http://localhost:5000");
+      // socket.current = io("http://localhost:5000");
+      socket.current = io("https://meridianhosts.onrender.com/");
       socket.current.emit("Update online users", auth.user_id);
     }
 
