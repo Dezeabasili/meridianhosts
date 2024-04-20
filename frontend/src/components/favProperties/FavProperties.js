@@ -26,7 +26,7 @@ const FavProperties = () => {
       const loadPage = async () => {
         setLoading(true);
         try {
-          const resp = await axios.get("http://localhost:5000/api/v1/hotels?sort=-ratingsAverage&limit=4");
+          const resp = await axios.get("https://meridianhosts.onrender.com/api/v1/hotels?sort=-ratingsAverage&limit=4");
 
           setHotelsData([...resp.data.data]);
 

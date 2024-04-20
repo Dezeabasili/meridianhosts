@@ -27,7 +27,7 @@ const FeaturedHotels = () => {
       const loadPage = async () => {
         setLoading(true);
         try {
-          const resp = await axios.get("http://localhost:5000/api/v1/hotels/countByType");
+          const resp = await axios.get("https://meridianhosts.onrender.com/api/v1/hotels/countByType");
           setHotelsData([...resp.data.data]);
 
           if (ref.current <= 600) {

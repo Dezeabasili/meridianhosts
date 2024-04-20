@@ -45,7 +45,7 @@ const Header = ({ type }) => {
 
         try {
           // const resp = await axios.get("http://localhost:5000/api/v1/hotels/allcityrefs");
-          const resp = await axios.get("/hotels/allcityrefs");
+          const resp = await axios.get("https://meridianhosts.onrender.com/hotels/allcityrefs");
           // console.log("hotels: ", resp.data.data);
           setCityData([...resp.data.data]);
 
