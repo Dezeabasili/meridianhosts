@@ -26,7 +26,7 @@ const UpdateMyDetails = () => {
       const loadUser = async () => {
         try {
           setLoading(true);
-          const resp = await axiosWithInterceptors.get("http://localhost:5000/api/v1/users/myaccount", {
+          const resp = await axiosWithInterceptors.get("https://meridianhosts.onrender.com/api/v1/users/myaccount", {
             withCredentials: true,
           });
           setUserInfo({ ...resp.data.data });
@@ -62,7 +62,7 @@ const UpdateMyDetails = () => {
     e.preventDefault();
     try {
       const response = await axiosWithInterceptors.patch(
-        "http://localhost:5000/api/v1/users/updatemyaccount",
+        "https://meridianhosts.onrender.com/api/v1/users/updatemyaccount",
         { name, username, email }
       );
 

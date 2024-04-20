@@ -16,7 +16,7 @@ const CountHotelsByTypes = () => {
       const displayData = async () => {
         setLoading(true);
         try {
-          const resp = await axios.get("http://localhost:5000/api/v1/hotels/countbytype");
+          const resp = await axios.get("https://meridianhosts.onrender.com/api/v1/hotels/countbytype");
           // console.log(resp.data.data);
           setHotelData([...resp.data.data]);
           setLoading(false)

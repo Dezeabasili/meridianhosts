@@ -25,7 +25,7 @@ const UpdateRoom = () => {
     setOpenHotelModal(false);
     try {
       const resp = await axiosWithInterceptors.patch(
-        `http://localhost:5000/api/v1/rooms/${location.state}`,
+        `https://meridianhosts.onrender.com/api/v1/rooms/${location.state}`,
         { title, price, maxPeople, description, addRooms, hotel, removeRooms }
       );
       // console.log(resp.data.data);
@@ -50,7 +50,7 @@ const UpdateRoom = () => {
     } else {
       try {
         const resp = await axiosWithInterceptors.patch(
-          `http://localhost:5000/api/v1/rooms/${location.state}`,
+          `https://meridianhosts.onrender.com/api/v1/rooms/${location.state}`,
           { title, price, maxPeople, description, addRooms }
         );
         console.log(resp.data.data);

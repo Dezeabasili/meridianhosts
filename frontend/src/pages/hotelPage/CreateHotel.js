@@ -34,13 +34,13 @@ const CreateHotel = () => {
         setLoading(true);
         try {
           const resp = await axiosWithInterceptors.get(
-            "http://localhost:5000/api/v1/hotels/allcityrefs"
+            "https://meridianhosts.onrender.com/api/v1/hotels/allcityrefs"
           );
           // console.log("hotels: ", resp.data.data);
           setCityData([...resp.data.data]);
 
           const resp2 = await axiosWithInterceptors.get(
-            "http://localhost:5000/api/v1/hotels/allhoteltyperefs"
+            "https://meridianhosts.onrender.com/api/v1/hotels/allhoteltyperefs"
           );
           // console.log("hotels: ", resp.data.data);
           setHotelTypeData([...resp2.data.data]);
@@ -83,7 +83,7 @@ const CreateHotel = () => {
         address,
       };
 
-      const resp = await axiosWithInterceptors.post("http://localhost:5000/api/v1/hotels", {
+      const resp = await axiosWithInterceptors.post("https://meridianhosts.onrender.com/api/v1/hotels", {
         name,
         city,
         type,

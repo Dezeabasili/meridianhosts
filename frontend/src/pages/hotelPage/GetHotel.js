@@ -38,7 +38,7 @@ const GetHotel = () => {
               starsToDisplay.current.yellowStars -
               starsToDisplay.current.whiteStars;
           } else {
-            const resp = await axiosWithInterceptors.get(`http://localhost:5000/api/v1/hotels/${hotel_id}`);
+            const resp = await axiosWithInterceptors.get(`https://meridianhosts.onrender.com/api/v1/hotels/${hotel_id}`);
             console.log("resp.data.data: ", resp.data.data);
             setHotelToDisplay(resp.data.data);
             starsToDisplay.current.yellowStars = Math.trunc(
@@ -67,7 +67,7 @@ const GetHotel = () => {
 
   const deleteThisHotel = async () => {
     try {
-      await axiosWithInterceptors.delete(`http://localhost:5000/api/v1/hotels/${hotelToDisplay._id}`);
+      await axiosWithInterceptors.delete(`https://meridianhosts.onrender.com/api/v1/hotels/${hotelToDisplay._id}`);
       navigate("/hotels");
     } catch (err) {
       console.log(err);

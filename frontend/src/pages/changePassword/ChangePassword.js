@@ -33,7 +33,7 @@ const ChangePassword = () => {
     e.preventDefault();
     try {
       const response = await axiosWithInterceptors.post(
-        "http://localhost:5000/api/v1/auth/changepassword",
+        "https://meridianhosts.onrender.com/api/v1/auth/changepassword",
         { currentPassword, password }
       );
       // console.log(response.data)

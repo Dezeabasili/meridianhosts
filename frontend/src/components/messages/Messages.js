@@ -57,8 +57,8 @@ const Messages = () => {
 
   useEffect(() => {
     if (socket.current == null) {
-      // socket.current = io("http://localhost:5000");
-      socket.current = io("https://meridianhosts.onrender.com/");
+      // socket.current = io("https://meridianhosts.onrender.com");
+      socket.current = io("https://meridianhosts.onrender.com");
       socket.current.emit("Update online users", auth.user_id);
     }
 
@@ -126,7 +126,7 @@ const Messages = () => {
   const downloadMessages = async (notification) => {
     try {
       const res = await axiosWithInterceptors.get(
-        `http://localhost:5000/api/v1/messages/${notification.chat_id}`
+        `https://meridianhosts.onrender.com/api/v1/messages/${notification.chat_id}`
       );
       // console.log(res.data)
       setMessages(res.data);
@@ -163,7 +163,7 @@ const Messages = () => {
     chatMessage.chatInfo = chat_id;
 
     try {
-      const res = await axiosWithInterceptors.post("http://localhost:5000/api/v1/messages", {
+      const res = await axiosWithInterceptors.post("https://meridianhosts.onrender.com/api/v1/messages", {
         messageContent: newMessage,
         chatInfo: chat_id,
       });

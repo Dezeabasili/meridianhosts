@@ -34,7 +34,7 @@ const GetUser = () => {
 
   const deleteThisUser = async () => {
     try {
-      await axiosWithInterceptors.delete(`http://localhost:5000/api/v1/users/${userToDisplay._id}`);
+      await axiosWithInterceptors.delete(`https://meridianhosts.onrender.com/api/v1/users/${userToDisplay._id}`);
       navigate("/users");
     } catch (err) {
       if (err.response.data.message) {

@@ -16,7 +16,7 @@ const GetAllHotelCityRefs = () => {
         setLoading(true);
         try {
       
-            const resp = await axiosWithInterceptors.get("http://localhost:5000/api/v1/hotels/allcityrefs");
+            const resp = await axiosWithInterceptors.get("https://meridianhosts.onrender.com/api/v1/hotels/allcityrefs");
             // console.log("hotels: ", resp.data.data);
             setReferenceList([...resp.data.data]);
          

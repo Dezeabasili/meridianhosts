@@ -21,7 +21,7 @@ const GetAllRooms = () => {
               setRoomsList(location.state);
           
           } else {
-            const resp = await axiosWithInterceptors.get("http://localhost:5000/api/v1/rooms");
+            const resp = await axiosWithInterceptors.get("https://meridianhosts.onrender.com/api/v1/rooms");
             console.log("rooms: ", resp.data.data);
             setRoomsList([...resp.data.data]);
           }

@@ -22,7 +22,7 @@ const GetAllHotels = () => {
           if (location.state) {
             setHotelsList(location.state);
           } else {
-            const resp = await axiosWithInterceptors.get("http://localhost:5000/api/v1/hotels");
+            const resp = await axiosWithInterceptors.get("https://meridianhosts.onrender.com/api/v1/hotels");
             // console.log("hotels: ", resp.data.data);
             setHotelsList([...resp.data.data]);
           }

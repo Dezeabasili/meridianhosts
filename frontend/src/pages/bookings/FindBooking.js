@@ -15,7 +15,7 @@ const FindBooking = () => {
     e.preventDefault();
     try {
       const resp = await axiosWithInterceptors.post(
-        "http://localhost:5000/api/v1/bookings/findbooking",
+        "https://meridianhosts.onrender.com/api/v1/bookings/findbooking",
         { booking_id: bookingRef, email }
       );
       console.log(resp.data.data);

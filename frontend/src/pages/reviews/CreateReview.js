@@ -18,7 +18,7 @@ const CreateReview = () => {
     e.preventDefault();
     try {
       console.log('ratings: ', rating)
-      const resp = await axiosWithInterceptors.post("http://localhost:5000/api/v1/reviews", {
+      const resp = await axiosWithInterceptors.post("https://meridianhosts.onrender.com/api/v1/reviews", {
         bookingRef,
         rating,
         review

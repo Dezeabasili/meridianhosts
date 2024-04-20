@@ -14,7 +14,7 @@ const CreateHotelType = () => {
     e.preventDefault();
     try {
 
-      const resp = await axiosWithInterceptors.post("http://localhost:5000/api/v1/hotels/createhoteltype", {
+      const resp = await axiosWithInterceptors.post("https://meridianhosts.onrender.com/api/v1/hotels/createhoteltype", {
         hotelType  
       });
       console.log(resp.data.data);

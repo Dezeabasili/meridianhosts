@@ -15,7 +15,7 @@ const Subscription = () => {
       }
     e.preventDefault();
     try {
-        await axios.post('http://localhost:5000/api/v1/users/subscriptions', {email})
+        await axios.post('https://meridianhosts.onrender.com/api/v1/users/subscriptions', {email})
         setEmail('Thank you for subscribing')
     } catch (err) {
         navigate('/register')

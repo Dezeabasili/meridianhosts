@@ -24,7 +24,7 @@ const MyReviews = () => {
           if (location.state) {
             setReviewsList(location.state);
           } else {
-            const resp = await axiosWithInterceptors.get("http://localhost:5000/api/v1/reviews/myreviews");
+            const resp = await axiosWithInterceptors.get("https://meridianhosts.onrender.com/api/v1/reviews/myreviews");
             // console.log("reviews: ", resp.data.data);
             setReviewsList([...resp.data.data]);
           }
@@ -54,7 +54,7 @@ const MyReviews = () => {
 
   const deleteMyReview = async (review_id) => {
     try {
-      await axiosWithInterceptors.delete(`http://localhost:5000/api/v1/reviews/${review_id}`)
+      await axiosWithInterceptors.delete(`https://meridianhosts.onrender.com/api/v1/reviews/${review_id}`)
       setRefresh(true)
     } catch (err) {
       if (err.response?.data?.message) {

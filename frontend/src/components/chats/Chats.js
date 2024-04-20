@@ -39,11 +39,11 @@ const Chats = () => {
     const getAllChats = async () => {
       try {
         setLoading(true);
-        const res1 = await axiosWithInterceptors.get("http://localhost:5000/api/v1/chats");
+        const res1 = await axiosWithInterceptors.get("https://meridianhosts.onrender.com/api/v1/chats");
         // console.log("chats: ", res1.data);
         setChats(res1.data);
 
-        const res2 = await axiosWithInterceptors.get("http://localhost:5000/api/v1/users");
+        const res2 = await axiosWithInterceptors.get("https://meridianhosts.onrender.com/api/v1/users");
         // console.log("users: ", res2.data);
         let usersExcludingMyself = res2.data.data.filter(
           (user) => user._id !== auth.user_id
@@ -92,7 +92,7 @@ const Chats = () => {
       setIsOpenChat(false);
       setIsOpenChatMenuModal(false);
       setIsOpenChatMenu(true);
-      const res = await axiosWithInterceptors.get(`http://localhost:5000/api/v1/messages/${chat._id}`);
+      const res = await axiosWithInterceptors.get(`https://meridianhosts.onrender.com/api/v1/messages/${chat._id}`);
       // console.log(res.data)
       setMessages(res.data);
       setChatName(retrieveName(chat));

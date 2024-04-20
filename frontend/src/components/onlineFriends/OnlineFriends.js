@@ -60,12 +60,12 @@ const OnlineFriends = () => {
     setIsOpenChatMenuModal(false);
     setIsOpenChatMenu(true);
     try {
-      const res1 = await axiosWithInterceptors.post("http://localhost:5000/api/v1/chats", {
+      const res1 = await axiosWithInterceptors.post("https://meridianhosts.onrender.com/api/v1/chats", {
         chatPartner_Id,
       });
 
       const res2 = await axiosWithInterceptors.get(
-        `http://localhost:5000/api/v1/messages/${res1.data._id}`
+        `https://meridianhosts.onrender.com/api/v1/messages/${res1.data._id}`
       );
       // console.log(res2.data);
       setMessages(res2.data);

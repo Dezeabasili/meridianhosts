@@ -18,14 +18,14 @@ const UpdateUser = () => {
 
     try {
       let resp = await axiosWithInterceptors.patch(
-        "http://localhost:5000/api/v1/users/updateuser",
+        "https://meridianhosts.onrender.com/api/v1/users/updateuser",
         { roles, active, email }
       );
 
       if (resp.data.data.matchedCount === 1) {
         try {
           const resp2 = await axiosWithInterceptors.post(
-            "http://localhost:5000/api/v1/users/finduser",
+            "https://meridianhosts.onrender.com/api/v1/users/finduser",
             {
               email,
             }

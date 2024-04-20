@@ -12,7 +12,7 @@ const GetBooking = () => {
 
   const deleteThisBooking = async () => {
     try {
-      await axiosWithInterceptors.delete(`http://localhost:5000/api/v1/bookings/${bookingToDisplay._id}`);     
+      await axiosWithInterceptors.delete(`https://meridianhosts.onrender.com/api/v1/bookings/${bookingToDisplay._id}`);     
       if (location.state?.pathname === '/mybookings') {
         navigate("/mybookings");
       } else  {

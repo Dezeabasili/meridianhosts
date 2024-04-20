@@ -91,7 +91,7 @@ const UploadMultipleFiles = () => {
 
     try {
       const resp = await axiosWithInterceptors.post(
-        "http://localhost:5000/api/v1/auth/upload",
+        "https://meridianhosts.onrender.com/api/v1/auth/upload",
         { urlArray, fileCode, id, public_idArray },
         {
           withCredentials: true,
@@ -122,7 +122,7 @@ const UploadMultipleFiles = () => {
 
     try {
       const resp = await axiosWithInterceptors.post(
-        "http://localhost:5000/api/v1/auth/generatesignature",
+        "https://meridianhosts.onrender.com/api/v1/auth/generatesignature",
         { folder: folderName },
         {
           withCredentials: true,

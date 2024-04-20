@@ -27,7 +27,7 @@ const MyAccount = () => {
         // console.log('profilePhoto: ', profilePhoto)
         setLoading(true);
         setRefresh(false);
-        const resp = await axiosWithInterceptors.get("http://localhost:5000/api/v1/users/myaccount", {
+        const resp = await axiosWithInterceptors.get("https://meridianhosts.onrender.com/api/v1/users/myaccount", {
           withCredentials: true,
         });
         setUserInfo({ ...resp.data.data });
@@ -69,7 +69,7 @@ const MyAccount = () => {
 
   const deletePhoto = async () => {
     try {
-      await axiosWithInterceptors.delete("http://localhost:5000/api/v1/users/myaccount/deletemyphoto");
+      await axiosWithInterceptors.delete("https://meridianhosts.onrender.com/api/v1/users/myaccount/deletemyphoto");
 
       setRefresh(true);
     } catch (err) {
@@ -88,8 +88,8 @@ const MyAccount = () => {
 
   const deleteAccount = async () => {
     try {
-      await axiosWithInterceptors.delete("http://localhost:5000/api/v1/users/deletemyaccount");
-      await axios.get("http://localhost:5000/api/v1/auth/logout", {
+      await axiosWithInterceptors.delete("https://meridianhosts.onrender.com/api/v1/users/deletemyaccount");
+      await axios.get("https://meridianhosts.onrender.com/api/v1/auth/logout", {
         withCredentials: true,
       });
       setAuth({});

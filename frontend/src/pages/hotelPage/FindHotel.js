@@ -21,12 +21,12 @@ const FindHotel = () => {
       const references = async () => {
         setLoading(true);
         try {
-          const resp = await axiosWithInterceptors.get("http://localhost:5000/api/v1/hotels/allcityrefs");
+          const resp = await axiosWithInterceptors.get("https://meridianhosts.onrender.com/api/v1/hotels/allcityrefs");
           // console.log("hotels: ", resp.data.data);
           setCityData([...resp.data.data]);
 
           const resp2 = await axiosWithInterceptors.get(
-            "http://localhost:5000/api/v1/hotels/allhoteltyperefs"
+            "https://meridianhosts.onrender.com/api/v1/hotels/allhoteltyperefs"
           );
           // console.log("hotels: ", resp.data.data);
           setHotelTypeData([...resp2.data.data]);
@@ -53,7 +53,7 @@ const FindHotel = () => {
     e.preventDefault();
     try {
       const resp = await axiosWithInterceptors.get(
-        `http://localhost:5000/api/v1/hotels?cityref=${city}`
+        `https://meridianhosts.onrender.com/api/v1/hotels?cityref=${city}`
       );
       console.log(resp.data.data);
       const hotelsToDisplay = [...resp.data.data]

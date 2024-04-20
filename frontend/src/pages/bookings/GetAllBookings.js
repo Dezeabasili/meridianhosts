@@ -22,7 +22,7 @@ const GetAllBookings = () => {
       setLoading(true);
       setRefresh(false);
       try {
-        const resp = await axiosWithInterceptors.get("http://localhost:5000/api/v1/bookings");
+        const resp = await axiosWithInterceptors.get("https://meridianhosts.onrender.com/api/v1/bookings");
         console.log("bookings: ", resp.data.data);
         setBookingsList([...resp.data.data]);
 

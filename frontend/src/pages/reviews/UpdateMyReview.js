@@ -17,7 +17,7 @@ const UpdateMyReview = () => {
     e.preventDefault();
     try {
       
-      const resp = await axiosWithInterceptors.patch(`http://localhost:5000/api/v1/reviews/${location.state}`, {
+      const resp = await axiosWithInterceptors.patch(`https://meridianhosts.onrender.com/api/v1/reviews/${location.state}`, {
         rating,
         review
       });

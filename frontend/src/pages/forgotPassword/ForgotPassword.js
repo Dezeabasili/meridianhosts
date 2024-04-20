@@ -12,7 +12,7 @@ const ForgotPassword = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:5000/api/v1/auth/forgotpassword', { email })
+            const response = await axios.post('https://meridianhosts.onrender.com/api/v1/auth/forgotpassword', { email })
 
             // console.log(response.data)
             navigate('/login')

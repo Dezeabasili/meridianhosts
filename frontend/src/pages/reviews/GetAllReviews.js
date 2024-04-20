@@ -23,7 +23,7 @@ const GetAllReviews = () => {
           if (location.state) {
             setReviewsList(location.state);
           } else {
-            const resp = await axiosWithInterceptors.get("http://localhost:5000/api/v1/reviews");
+            const resp = await axiosWithInterceptors.get("https://meridianhosts.onrender.com/api/v1/reviews");
             console.log("reviews: ", resp.data.data);
             setReviewsList([...resp.data.data]);
           }

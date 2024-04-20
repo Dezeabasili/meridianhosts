@@ -39,7 +39,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/v1/auth/register", {
+      const response = await axios.post("https://meridianhosts.onrender.com/api/v1/auth/register", {
         name,
         username,
         email,

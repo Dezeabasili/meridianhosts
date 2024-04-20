@@ -14,7 +14,7 @@ const GetAllBookingsForAHotel = () => {
     e.preventDefault();
     try {
       const resp = await axiosWithInterceptors.get(
-        `http://localhost:5000/api/v1/bookings?hotel_id=${hotelRef}`
+        `https://meridianhosts.onrender.com/api/v1/bookings?hotel_id=${hotelRef}`
       );
       console.log(resp.data.data);
       const bookingsToDisplay = [...resp.data.data]

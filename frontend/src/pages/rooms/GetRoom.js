@@ -36,7 +36,7 @@ const GetRoom = () => {
             roomStyle = location.state
 
           } else {
-            const resp = await axiosWithInterceptors.get(`http://localhost:5000/api/v1/rooms/${room_id}`);
+            const resp = await axiosWithInterceptors.get(`https://meridianhosts.onrender.com/api/v1/rooms/${room_id}`);
             setRoomToDisplay({ ...resp.data.data });
             roomStyle = resp.data.data
           }
@@ -66,7 +66,7 @@ const GetRoom = () => {
 
   const deleteThisRoom = async () => {
     try {
-      await axiosWithInterceptors.delete(`http://localhost:5000/api/v1/rooms/${room_id}`);
+      await axiosWithInterceptors.delete(`https://meridianhosts.onrender.com/api/v1/rooms/${room_id}`);
       navigate("/rooms");
     } catch (err) {
       if (err.response.data.message) {

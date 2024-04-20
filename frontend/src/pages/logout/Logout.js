@@ -19,7 +19,7 @@ const Logout = () => {
           // clear the access token from memory
           setAuth({});
           // clear the cookie
-          await axios.get("http://localhost:5000/api/v1/auth/logout", { withCredentials: true });
+          await axios.get("https://meridianhosts.onrender.com/api/v1/auth/logout", { withCredentials: true });
           localStorage.clear();
           setProfilePhoto('')
           setLoading(false);

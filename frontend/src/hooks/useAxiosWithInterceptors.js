@@ -35,7 +35,7 @@ const useAxiosInterceptors = () => {
                 req.firstTime = true
                 console.log('This is inside the Response Interceptor and above the request for new access token')
                 // request new access token
-                const response = await axios2.get('http://localhost:5000/api/v1/auth/renew_access_token')
+                const response = await axios2.get('https://meridianhosts.onrender.com/api/v1/auth/renew_access_token')
                 const newAccessToken = response.data.accessToken
                 console.log('This is inside the Response Interceptor and above the setAuth')
                 // update auth with new access token
