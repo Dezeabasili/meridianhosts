@@ -2,9 +2,19 @@ const dotenv = require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const Room = require("./../models/rooms");
 const Booking = require("./../models/bookings");
+const Hotel = require("./../models/hotels")
 const User = require('./../models/users')
 const createError = require("../utils/error");
 const sendOutMail = require('../utils/handleEmail3')
+
+// function to format date
+const formatDate = (value) => {
+  let date = new Date(value);
+  const day = date.toLocaleString('default', { day: '2-digit' });
+  const month = date.toLocaleString('default', { month: 'short' });
+  const year = date.toLocaleString('default', { year: 'numeric' });
+  return day + '-' + month + '-' + year;
+}
 
 const updateRoomAvailability = async (room_id, reservedDates) => {
   // console.log(req.body.reservedDates)
@@ -69,44 +79,6 @@ const stripeCheckout = async (req, res, next) => {
       path: "hotel",
       select: "name",
     });
-
-    // console.log('roomTypeArray: ', roomTypeArray)
-
-    // const promiseList = selectedRooms.map((roomId) => {
-    //     return Room.findOne({"roomNumbers._id": roomId}).populate({
-    //         path: 'hotel',
-    //         select: 'name city'
-    //     })
-    // })
-    // const roomTypeArray = await Promise.all(promiseList)
-
-    // console.log(roomTypeArray)
-
-    // let bookingsArray = []
-
-    // selectedRooms.forEach(selectedRoom => {
-    //   roomTypeArray.forEach(roomType => {
-    //     roomType.roomNumbers.forEach(roomNumber => {
-    //       if (roomNumber._id == selectedRoom) {
-    //         let roomDetails = {}
-    //         // roomDetails.roomSytleId = roomType._id
-    //         roomDetails.hotelName = roomType.hotel.name
-    //         roomDetails.city = roomType.hotel.city
-    //         roomDetails.roomNumber = roomNumber.number
-    //         roomDetails.checkin_date = checkin_date
-    //         roomDetails.checkout_date = checkout_date
-    //         roomDetails.price_per_night = roomType.price
-    //         roomDetails.number_of_nights = numberOfNights
-    //         roomDetails.room_type = roomType.title
-
-    //         bookingsArray.push(roomDetails)
-    //       }
-    //     })
-    //   })
-    // })
-
-    // // console.log('roomDeatails :', roomDetails)
-    // console.log('bookingsArray :', bookingsArray)
 
     // create customer
     const customer = await stripe.customers.create({
@@ -246,9 +218,31 @@ const stripeWebHook = async (req, res, next) => {
 
       const confirmedBooking = await Booking.create({ ...newBooking });
       const customerDetails = await User.findById(user_id)
+      const hotelDetails = await Hotel.findById(hotel_id)
 
-      console.log("confirmedBooking: ", confirmedBooking);
-      await sendOutMail(customerDetails, confirmedBooking)
+      const bookingDate = new Intl.DateTimeFormat('en-US', {
+        dateStyle: 'full',
+        timeStyle: 'long',
+        timeZone: 'CST',
+      }).format(confirmedBooking.createdAt)
+
+      let htmlReceipt = ''
+      htmlReceipt = htmlReceipt + `<p>Booking reference: ${confirmedBooking._id}</p>`
+      htmlReceipt = htmlReceipt + `<p style="text-transform: capitalize">Customer name: ${customerDetails.name}</p>`
+      htmlReceipt = htmlReceipt + `<p style="text-transform: capitalize">Hotel name: <strong>${hotelDetails.name}</strong></p><br/>`
+      htmlReceipt = htmlReceipt + `<p>Booking date: ${bookingDate}</p><br/>`
+      confirmedBooking.bookingDetails.forEach(detail => {
+        htmlReceipt = htmlReceipt + `<p style="text-transform: capitalize">Room type: ${detail.room_type}</p>`
+        htmlReceipt = htmlReceipt + `<p>Price per night: $${detail.price_per_night}</p>`
+        htmlReceipt = htmlReceipt + `<p>Room number: ${detail.roomNumber}</p>`
+        htmlReceipt = htmlReceipt + `<p>Check-in date: ${formatDate(detail.checkin_date)}</p>`
+        htmlReceipt = htmlReceipt + `<p>Check-out date: ${formatDate(detail.checkout_date)}</p>`
+        htmlReceipt = htmlReceipt + `<p>Number of nights: ${detail.number_of_nights}</p><br/>`
+      })
+     
+
+      // console.log("confirmedBooking: ", confirmedBooking);
+      await sendOutMail(customerDetails, htmlReceipt)
 
       selectedRooms.forEach(async (room_id) => {
         await updateRoomAvailability(room_id, reservedDates);

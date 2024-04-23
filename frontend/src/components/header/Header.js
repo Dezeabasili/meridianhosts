@@ -44,7 +44,6 @@ const Header = ({ type }) => {
         setDestination("");
 
         try {
-          // const resp = await axios.get("https://meridianhosts.onrender.com/api/v1/hotels/allcityrefs");
           const resp = await axios.get("https://meridianhosts.onrender.com/api/v1/hotels/allcityrefs");
           // console.log("hotels: ", resp.data.data);
           setCityData([...resp.data.data]);
