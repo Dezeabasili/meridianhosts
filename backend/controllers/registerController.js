@@ -34,12 +34,11 @@ const register = async (req, res, next) => {
         // do not display the password to the user
         user.password = undefined
 
-        // await sendOutMail(user)
+        await sendOutMail(user)
 
         res.status(201).json(user)
     } catch (err) {
         next(err)
     }
-}
 
 module.exports = { register }
