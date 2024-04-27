@@ -41,4 +41,5 @@ const register = async (req, res, next) => {
         next(err)
     }
 
+}
 module.exports = { register }
