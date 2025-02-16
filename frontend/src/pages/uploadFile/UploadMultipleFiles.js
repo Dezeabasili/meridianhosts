@@ -69,12 +69,21 @@ const UploadMultipleFiles = () => {
       return;
     }
 
+    let numberOfFiles;
+    if (filesList.length > 6) {
+      numberOfFiles = 6;
+    } else {
+      numberOfFiles = filesList.length;
+    }
+
+    
+
     if (fileCode === "profilephoto") {
       await photoUpdate("profilephotos", 0, urlArray, public_idArray);
     } else if (fileCode === "hotelphoto") {
       await photoUpdate("hotelphotos", 0, urlArray, public_idArray);
     } else if (fileCode === "roomphoto") {
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < numberOfFiles; i++) {
         await photoUpdate("roomphotos", i, urlArray, public_idArray);
       }
     } else if (fileCode === "cityphoto") {
