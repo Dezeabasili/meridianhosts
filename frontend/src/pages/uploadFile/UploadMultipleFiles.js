@@ -77,7 +77,6 @@ const UploadMultipleFiles = () => {
     }
 
     
-
     if (fileCode === "profilephoto") {
       await photoUpdate("profilephotos", 0, urlArray, public_idArray);
     } else if (fileCode === "hotelphoto") {
