@@ -58,7 +58,7 @@ const upload_file = async (req, res, next) => {
       room.photo_id = [...req.body.public_idArray];
       await room.save();
       if (photoId.length > 0) {
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < photoId.length; i++) {
           await cloudinary.uploader.destroy(photoId[i]);
         }        
       }
